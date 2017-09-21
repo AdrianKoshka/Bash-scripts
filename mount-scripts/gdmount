@@ -1,0 +1,2 @@
+#!/bin/bash
+mount -t davfs https://dav-pocket.appspot.com/docso /mnt/webdav/gdrive

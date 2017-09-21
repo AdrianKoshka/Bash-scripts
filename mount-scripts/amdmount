@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Variables
+
+USER="adrian"
+
+IP="10.42.0.1"
+
+RDIR="/mnt/storage"
+
+ORIGIN="$USER@$IP:$RDIR"
+
+MNTDIR="/mnt/sshfs/storage"
+
+# Functions
+
+sshfs_mount ()
+{
+sshfs $ORIGIN $MNTDIR
+}
+
+# Execution
+
+sshfs_mount

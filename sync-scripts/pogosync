@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [ -f ~/.lock/subsys/pogosync_in_progress ]; then
+	echo "pogosync is already running"
+	exit 0
+fi
+
+BACKUPDIR="alarm@192.168.0.80:/mnt/raid/storage/backup/"
+
+if [ -d /mnt/storage/backup ]; then
+	touch ~/.lock/subsys/pogosync_in_progress
+
+	rsync \
+		-ahuP \
+		/mnt/storage/backup/ \
+		--exclude=adrian/Music --delete \
+		$BACKUPDIR
+	rm -f ~/.lock/subsys/pogosync_in_progress
+else
+	echo "Target directory /mnt/storage/backup does not exist"
+fi

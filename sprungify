@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Syntax
+
+# <command> | sprungify
+
+curl -sF 'sprunge=<-' http://sprunge.us
+# Runs command through curl and outputs
+# a link to the posted results.

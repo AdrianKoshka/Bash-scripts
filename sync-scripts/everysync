@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -e
+
+BACKUPDIR="adrian@pi-zero.local:/mnt/storage/backup/"
+
+if [ -f /tmp/everysync_in_progress ]; then
+	echo "eversync is already running"
+	exit 0
+fi
+
+if [ -d $HOME ]; then
+	touch ~/.lock/subsys/everysync_in_progress
+	rsync \
+		-ahuP \
+		$HOME \
+		--exclude-from=$HOME/.exclude.txt --delete \
+		$BACKUPDIR
+	/bin/rm -f ~/.lock/subsys/everysync_in_progress
+else
+	echo "Target directory $HOME does not exist"
+fi

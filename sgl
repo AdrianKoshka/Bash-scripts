@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+if [ -z "$(which gimp)" ]; then echo "Please install gimp"; exit; fi
+if [ -z "$(which curl)" ]; then echo "Please install curl"; exit; fi
+if [ -z "$(which scrot)" ]; then echo "Please install scrot"; exit; fi
+if [ -z "$(which pomfload)" ]; then echo "Please install pomfload"; exit; fi
+
+# SGL
+# S = Scrot
+# G = Gimp
+# L = pomfload
+
+# Functions
+
+scrotit ()
+{
+	scrot ${SCREEN} "${FILE}"
+}
+
+open_gimp ()
+{
+	gimp "${FILE}"
+}
+
+upload ()
+{
+	pomfload "${FILE}"
+}
+
+#########################
+
+if [ $# -eq 0 ]; then
+	echo "Usage: $0 [ -f <filename> -h -g ]"
+fi
+
+while getopts "f:hmnu" opt; do # -f, -h, -m, -n, -u
+	case "$opt" in
+
+		u)
+			SCREEN="-u"
+			;;
+
+		m)
+			SCREEN="-m"
+			;;
+
+		f)
+			FILE="${OPTARG}"
+			;;
+
+		n)
+			aflag=1;;
+
+
+		h)
+			echo "Usage: $0 [ -f <filename> -h ]"
+			exit 1
+			;;
+	esac
+done
+if [ ! -z "${aflag}" ]; then
+	scrotit; upload
+	rm "${FILE}"
+fi
+if [ -z "${aflag}"  ]; then
+	scrotit; open_gimp; upload
+	rm "${FILE}"
+fi
+shift $(($OPTIND - 1))

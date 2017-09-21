@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+BACKUPDIR="adrian@192.168.0.102:/home/adrian/tape-stuff/"
+
+rsync \
+	-ahzuP \
+	/mnt/storage/backup/everyone \
+	--safe-links \
+	$BACKUPDIR

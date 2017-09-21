@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Variables
+
+# short for Arguments
+ARGS="-t nfs"
+# Short for remote mount point, i.e where to mount from.
+RMNTPNT="p6-2033w.local:/hp"
+# short for local mount pnt, i.e. where to mount to.
+LMNTPNT="/media/adrian/nfs/hp"
+
+# Functions
+
+nfshp_mount()
+{
+mount $ARGS $RMNTPNT $LMNTPNT
+}
+
+# Execution
+
+nfshp_mount

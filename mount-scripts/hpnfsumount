@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Variables
+
+MNTDIR="/media/adrian/nfs/hp"
+
+# Fucntions
+
+nfshp_umount ()
+{
+umount $MNTDIR
+}
+
+# Execution
+
+nfshp_umount

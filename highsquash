@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+ARGS="-b 1048576 -comp xz -Xdict-size 100%"
+
+if [ $# -eq 0 ]; then
+	echo "Usage: $0 [ -i <file or directory> -h ]"
+fi
+
+	while getopts "i:h" arg; do # -i, -h,
+
+	case $arg in
+
+		i)
+			mksquashfs "${PWD}/${OPTARG}" "${OPTARG}.sqsh" ${ARGS}
+			exit 0
+			;;
+
+		h)
+			echo "Usage: $0 [ -i <file or directory> -h ]"
+			exit 0
+			;;
+
+		esac
+	done
+exit 1

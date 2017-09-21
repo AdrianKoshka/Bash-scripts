@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Variables
+
+var=$((var+1))
+interface="eth0"
+ip_address="192.168.0.103"
+port="22"
+
+# Functions
+
+main_app ()
+{
+while true
+do
+timeout -s TERM 1h tcpdump -i $interface \
+	ip and not net $ip_address and port not $port > $HOME/.sniff/'hour-'$var
+xz $HOME/.sniff/'hour-'$var
+echo "done sniffing"
+let "var=var+1"
+sleep 1
+done
+}
+
+# Execution
+
+main_app

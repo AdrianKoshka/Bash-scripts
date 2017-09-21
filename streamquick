@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ -z "$(which livestreamer)" ]; then echo "Please install livestreamer"; exit 1; fi
+if [ -z "$(which screen)" ]; then echo "Please install screen"; exit 1; fi
+# Functions
+
+streamit ()
+{
+	screen livestreamer "$1" best -p "mpv --hwdec=auto" --player-passthrough hl
+}
+
+# Execution
+
+streamit "$@"

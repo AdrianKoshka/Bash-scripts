@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Variables
+
+ARGS="-t"
+
+ORIGIN="https://dav.box.com/dav/"
+
+MNTDIR="/mnt/webdav/box"
+
+# Functions
+
+boxmount ()
+{
+mount $ARGS $ORIGIN $MNTDIR 
+}
+
+# Execution
+boxmount

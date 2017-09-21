@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Variables
+
+MNTDIR="/mnt/webdav/box"
+
+# Functions
+
+sshfs_umount ()
+{
+umount $MNTDIR
+}
+
+# Execution
+
+sshfs_umount

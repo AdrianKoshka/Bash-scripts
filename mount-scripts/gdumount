@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Variables
+
+MNTDIR="/mnt/webdav/gdrive"
+
+# Functions
+
+webdav_umount ()
+{
+umount $MNTDIR
+}
+
+# Execution
+
+webdav_umount
