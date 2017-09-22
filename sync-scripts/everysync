@@ -2,7 +2,7 @@
 
 set -e
 
-BACKUPDIR="adrian@pi-zero.local:/mnt/storage/backup/"
+BACKUPDIR="alc@[2604:6000:1201:81:76d4:35ff:fea9:c5eb]:/mnt/storage/backup/"
 
 if [ -f /tmp/everysync_in_progress ]; then
 	echo "eversync is already running"
@@ -12,7 +12,7 @@ fi
 if [ -d $HOME ]; then
 	touch ~/.lock/subsys/everysync_in_progress
 	rsync \
-		-ahuP \
+		-6ahuP \
 		$HOME \
 		--exclude-from=$HOME/.exclude.txt --delete \
 		$BACKUPDIR
