@@ -8,4 +8,4 @@ This project is licensed under [GPLv3](LICENSE).
 
 ## Authors
 
--   [Theodore Seán Tubbs](https://github.com/AdrianKoshka)
+- [Adrian Lucrèce Céleste](https://github.com/AdrianKoshka)
