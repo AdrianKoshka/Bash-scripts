@@ -3,18 +3,17 @@
 BACKUPDIR="/mnt/storage/backup/"
 
 
-if [ -f ~/.lock/subsys/backsync_in_progress ]; then
+if [ -f /var/run/${UID}/backsync/in_progress ]; then
 	echo "backsync is already running"
 	exit 0
 fi
 if [ -d $BACKUPDIR ]; then
-	touch ~/.lock/subsys/backsync_in_progress
+	touch /var/run/user/${UID}/backsync/in_progress
 	rsync \
 		-avhuP \
 		$HOME \
 		--delete --exclude-from=$HOME/.exclude \
 		$BACKUPDIR
-	/bin/rm -f ~/.lock/subsys/backsync_in_progress
 else
 	echo "Target directory $BACKUPDIR does not exist"
 fi
