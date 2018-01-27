@@ -10,7 +10,7 @@ fi
 if [ -d $BACKUPDIR ]; then
 	touch ~/.lock/subsys/backsync_in_progress
 	rsync \
-		-ahuP \
+		-avhuP \
 		$HOME \
 		--delete --exclude-from=$HOME/.exclude \
 		$BACKUPDIR
