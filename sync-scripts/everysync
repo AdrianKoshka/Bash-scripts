@@ -4,13 +4,13 @@ set -e
 
 BACKUPDIR="alc@192.168.0.22:/mnt/storage/backup/"
 
-if [ -f /var/run/${UID}/everysync/in_progress ]; then
+if [ -f /var/run/user/${UID}/everysync/in_progress ]; then
 	echo "eversync is already running"
 	exit 0
 fi
 
 if [ -d $HOME ]; then
-	touch /var/run/${UID}/everysync/in_progress
+	touch /var/run/user/${UID}/everysync/in_progress
 	rsync \
 		-ahuP \
 		$HOME \
